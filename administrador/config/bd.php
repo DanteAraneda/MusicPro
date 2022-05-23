@@ -1,5 +1,5 @@
 <?php
-define("KEY", "musicpro");
+/* define("KEY", "musicpro");
 //metodo de encriptacion AES-128-ECB
 define("COD", "AES-128-ECB");
 //lugar donde esta la pagina
@@ -8,7 +8,18 @@ $host="localhost";
 $bd="musicaprofesional";
 
 $usuario="root";
-$contrasenia="";
+$contrasenia=""; */
+
+ define("KEY", "musicpro");
+//metodo de encriptacion AES-128-ECB
+define("COD", "AES-128-ECB");
+//lugar donde esta la pagina
+$host="us-cdbr-east-05.cleardb.net";
+    //nombre de base de datos
+$bd="heroku_d8895d1bc05aa17";
+
+$usuario="be1a66753f0664";
+$contrasenia="64b614f6"; 
 
 
 try {

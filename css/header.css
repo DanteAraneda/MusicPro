@@ -1,0 +1,55 @@
+.boton_d {
+    background: transparent;
+    /* background-image: url("../img/flags/peru.png"); */
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center;
+    display: inline-block;
+    border: none;
+    /* padding: 20px; */
+    width: 90%; 
+    border-left-width: 90%;
+    border-radius: 900px;
+    height: 100%;
+    transition: all 0.5s;
+    cursor: pointer;
+
+
+    font-size:1em;
+    font-weight: bold;
+    font-style: oblique;
+    font-family:'Helvetica';
+
+
+}
+
+/* .boton_d:hover
+{
+ width: 75px;
+ height: 75px;
+} */
+
+#b_usd {
+    background-image: url("../img/flags/estados-unidos.png");
+}
+
+#b_eur {
+    background-image: url("../img/flags/european-union.png");
+}
+
+#b_mxn {
+    background-image: url("../img/flags/mexico.png");
+}
+
+#b_arg {
+    background-image: url("../img/flags/argentina.png");
+}
+
+#b_pen {
+    background-image: url("../img/flags/peru.png");
+}
+
+.dropdown-menu {
+    min-width: 40px;
+    text-align: center;
+  }

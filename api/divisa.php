@@ -179,4 +179,69 @@
     }
 ?>
 
+<?php 
+
+    function ValorDivisa($amount, $to_currency,$usd,$eur,$mxn,$ars,$pen,$nusd,$neur,$nmxn,$nars,$npen){
+
+        
+        if ($to_currency == "USD"):
+
+            $valor_usd = round($amount * $usd,2);
+            return $valor_usd;
+
+        elseif ($to_currency == "EUR"):
+
+            $valor = round($amount * $eur,2);
+            return $valor;
+        
+        elseif ($to_currency == "MXN"):
+
+            $valor = round($amount * $mxn,2);
+            return $valor;
+
+        elseif ($to_currency == "ARS"):
+
+            $valor = round($amount * $ars,2);
+            return $valor;
+
+        elseif ($to_currency == "PEN"):
+
+            $valor = round($amount * $pen,2);
+            return $valor;
+
+        endif;
+    }
+?>
+
+
+<?php 
+
+    function NombreDivisa($to_currency,$nusd,$neur,$nmxn,$nars,$npen){
+
+        
+        if ($to_currency == "USD"):
+
+            return $nusd;
+
+        elseif ($to_currency == "EUR"):
+
+            return $neur;
+        
+        elseif ($to_currency == "MXN"):
+
+            return $nmxn;
+
+        elseif ($to_currency == "ARS"):
+
+            return $nars;
+
+        elseif ($to_currency == "PEN"):
+
+            return $npen;
+
+        endif;
+    }
+?>
+
+
 

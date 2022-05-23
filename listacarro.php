@@ -1,5 +1,6 @@
 <?php include("template/cabecera.php"); ?>
 <?php include("administrador/config/bd.php"); ?>
+<?php include("api/divisa.php") ?>
 <?php include("carro.php"); ?>
 <?php $nocliente="";
       $minimoaarticulo=4;
@@ -47,6 +48,9 @@
         <td colspan="3" align="right"><h3>Descuento:</h3></td>
         <td align="right"><h3><?php echo number_format($total*0.1,1);?></h3></td>
     </tr>
+
+
+
     <tr>
         <td colspan="3" align="right"><h3>TOTAL Cliente:</h3></td>
         <td align="right"><h3><?php echo number_format(($totalcliente),1);?></h3></td>
@@ -58,10 +62,48 @@
         </form>
 
     </tr>
+
+    <?php 
+        if (!empty($totalcliente)):
+
+            //amount
+            $precio = $totalcliente;
+            $amount = $precio;
+
+            if (!empty($_GET['to_currency'])):    
+
+                //To Currency
+                $to_currency = $_GET['to_currency'];
+                $NombreDivisa = NombreDivisa($to_currency,$nusd,$neur,$nmxn,$nars,$npen);
+                /* echo $NombreDivisa; */
+                $ValorDivisa = ValorDivisa($amount,$to_currency,$usd,$eur,$mxn,$ars,$pen,$nusd,$neur,$nmxn,$nars,$npen);
+                /* echo $ValorDivisa; */ ?> 
+                
+                <tr>
+                  <td colspan="3" align="right">
+                        <h3>TOTAL CLIENTE EN <?php echo $NombreDivisa ?>:</h3>
+                    </td>
+                    
+                    <td align="right">
+                        <h3><?php echo number_format($ValorDivisa,1);?></h3>
+                    </td>
+                </tr>
+                
+            <?php else:
+            endif;
+        else:
+
+        endif;
+    ?>
+
     <?php }else{ ?>
     <tr>
-      <td colspan="3" align="right"><h3>TOTAL</h3></td>
-      <td align="right"><h3><?php echo number_format($total,1);?></h3></td>
+      <td colspan="3" align="right">
+          <h3>TOTAL</h3>
+      </td>
+      <td align="right">
+          <h3><?php echo number_format($total,1);?></h3>
+      </td>
       <form action="" method="post">
       <input type="hidden" name="precioinvitado" id="precioinvitado" value="<?php echo openssl_encrypt($total,COD,KEY); ?>">
         <td colspan="4" align="right">        
@@ -69,6 +111,44 @@
         </td>
       </form>
     </tr>
+    
+
+
+    <?php 
+        if (!empty($total)):
+
+            //amount
+            $precio = $total;
+            $amount = $precio;
+
+            if (!empty($_GET['to_currency'])):    
+
+                //To Currency
+                $to_currency = $_GET['to_currency'];
+                $NombreDivisa = NombreDivisa($to_currency,$nusd,$neur,$nmxn,$nars,$npen);
+                /* echo $NombreDivisa; */
+                $ValorDivisa = ValorDivisa($amount,$to_currency,$usd,$eur,$mxn,$ars,$pen,$nusd,$neur,$nmxn,$nars,$npen);
+                /* echo $ValorDivisa; */ ?> 
+                
+                <tr>
+                  <td colspan="3" align="right">
+                        <h3><?php echo $NombreDivisa ?></h3>
+                    </td>
+                    
+                    <td align="right">
+                        <h3><?php echo number_format($ValorDivisa,1);?></h3>
+                    </td>
+                </tr>
+                
+            <?php else:
+            endif;
+        else:
+
+        endif;
+    ?>
+      
+ 
+
     <?php } ?>
   </thead>
 

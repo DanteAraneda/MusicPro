@@ -102,14 +102,52 @@
           <h3>TOTAL</h3>
       </td>
       <td align="right">
-          <h3><?php echo number_format($total,1);?></h3>
+          <h3><?php echo number_format($total,0);?></h3>
+          <?php include("webpay/webpay.php"); ?>
       </td>
-      <form action="" method="post">
+
+
       <input type="hidden" name="precioinvitado" id="precioinvitado" value="<?php echo openssl_encrypt($total,COD,KEY); ?>">
-        <td colspan="4" align="right">        
-          <button class="btn btn-success" type="submit" name="btncarro" value="Comprar">COMPRAR</button>
+              <td colspan="4" align="right">    
+              <?php if (strlen($url_tbk)) { ?>
+                      <form name="brouterForm" id="brouterForm"  method="POST" action="<?=$url_tbk?>" style="display:block;">
+                        <input type="hidden" name="token_ws" value="<?=$token?>" />
+                        <input type="submit" value="<?=(($submit)? $submit : 'Cargando...')?>" style="border: 1px solid #6b196b;
+          border-radius: 4px;
+          background-color: #6b196b;
+          color: #fff;
+          font-family: Roboto,Arial,Helvetica,sans-serif;
+          font-size: 1.14rem;
+          font-weight: 500;
+          margin: auto 0 0;
+          padding: 12px;
+          position: relative;
+          text-align: center;
+          -webkit-transition: .2s ease-in-out;
+          transition: .2s ease-in-out;
+          max-width: 200px;" />
+                </form>
+                <script>
+            
+                var auto_refresh = setInterval(
+                function()
+                {
+                    //submitform();
+                }, $total);
+            //}, 5000);
+                function submitform()
+                {
+                  //alert('test');
+                  document.brouterForm.submit();
+                }
+                </script>
+            <?php } ?>  
         </td>
       </form>
+
+      
+
+     
     </tr>
     
 

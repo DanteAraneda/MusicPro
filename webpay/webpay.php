@@ -45,7 +45,7 @@ function get_ws($data,$method,$type,$endpoint){
     return json_decode($response);
 }
 
-$resultado_url = "https://localhost/sitiowebdante/MusicPro/resultado.php";
+$resultado_url = "https://localhost/sitioweb/resultado.php";
 $baseurl = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
 $url="https://webpay3g.transbank.cl/";//Live
 $url="https://webpay3gint.transbank.cl/";//Testing
